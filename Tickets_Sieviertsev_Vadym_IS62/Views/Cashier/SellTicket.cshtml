@@ -1,0 +1,110 @@
+﻿@model Tickets_Sieviertsev_Vadym_IS62.Models.TicketSellViewModel
+
+@{
+    ViewBag.Title = "Sell Ticket";
+}
+
+<h2>Fill information fields about customer and choose ticket</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    if (Model != null && Model.Tickets.Length != 0)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr>
+        <table class="table" style="margin-top:100px;">
+            <tr>
+                <th hidden>
+
+                </th>
+                <th>
+                    Route
+                </th>
+                <th>
+                    Carriage type
+                </th>
+                <th>
+                    Trip date
+                </th>
+                <th>
+                    Price
+                </th>
+                <th hidden>
+
+                </th>
+                <th>
+                    Carriage number
+                </th>
+                <th>
+                    Position number
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Tickets)
+            {
+                <tr>
+                    <td hidden>
+                        <input id="blocked" name="blocked" type="text" value="@item.TicketId" />
+                    </td>
+                    <td>
+                        @item.Route.ToString()
+                    </td>
+                    <td>
+                        @item.CarriageType
+                    </td>
+                    <td>
+                        @item.TripDate.ToString()
+                    </td>
+                    <td>
+                        @item.Price.ToString()
+                    </td>
+                    <td hidden>
+                        @item.IsPurchased.ToString()
+                    </td>
+                    <td>
+                        @item.CarriageNumber.ToString()
+                    </td>
+                    <td>
+                        @item.PositionNumber.ToString()
+                    </td>
+                    <td>
+                        <input id="ticket" name="ticket" type="radio" value="@item.TicketId" />
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="form-group">
+            <input type="submit" value="Done" class="btn btn-default" />
+        </div>
+    }
+    else
+    {
+        <p>No tickets found</p>
+    }
+
+}

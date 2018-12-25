@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Tickets_Sieviertsev_Vadym_IS62.Models.TicketViewModel>
+
+@{
+    ViewBag.Title = "Tickets List";
+}
+
+<h2>Tickets List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateTicket")
+</p>
+
+<table class="table">
+    <tr>
+        <th hidden>
+            @Html.DisplayNameFor(model => model.TicketId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarriageType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPurchased)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarriageNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Route)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td hidden>
+            @Html.DisplayFor(modelItem => item.TicketId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarriageType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @if (item.IsPurchased == 0)
+            {
+                <span>No</span>
+            }
+            else
+            {
+                <span>Yes</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarriageNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Route)
+        </td>
+        <td>
+            @if (item.IsPurchased != 0)
+            {
+                @Html.ActionLink("Delete", "CheckOrder")
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Tickets_Sieviertsev_Vadym_IS62.Models.CustomersListViewModel>
+
+@{
+    ViewBag.Title = "CustomersList";
+}
+
+<h2>Customers List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cancellation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchasedTickets)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cancellation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchasedTickets)
+        </td>
+    </tr>
+}
+
+</table>

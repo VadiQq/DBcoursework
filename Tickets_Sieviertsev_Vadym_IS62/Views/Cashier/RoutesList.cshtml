@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Tickets_Sieviertsev_Vadym_IS62.Models.RoutesListViewModel>
+
+@{
+    ViewBag.Title = "RoutesList";
+}
+
+<h2>Routes List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateRoute")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FinishPoint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketsNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoldTicketsNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FinishPoint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketsNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoldTicketsNumber)
+        </td>
+    </tr>
+}
+
+</table>

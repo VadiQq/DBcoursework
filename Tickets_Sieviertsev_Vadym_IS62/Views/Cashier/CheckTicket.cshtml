@@ -1,0 +1,92 @@
+﻿@model Tickets_Sieviertsev_Vadym_IS62.Models.TicketViewModel
+
+@{
+    ViewBag.Title = "Check Ticket";
+}
+<h2>Ticket information</h2>
+@if (Model != null)
+{
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Route)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Route)
+            </dd>
+
+            <dt hidden>
+                @Html.DisplayNameFor(model => model.TicketId)
+            </dt>
+
+            <dd hidden>
+                @Html.DisplayFor(model => model.TicketId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CarriageType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CarriageType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TripDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TripDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ArrivalDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt hidden>
+                @Html.DisplayNameFor(model => model.IsPurchased)
+            </dt>
+
+            <dd hidden>
+                @Html.DisplayFor(model => model.IsPurchased)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CarriageNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CarriageNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PositionNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PositionNumber)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Cancel", "CancelOrder", new { ticketId = Model.TicketId }) |
+        @Html.ActionLink("To List", "TicketsList")
+    </p>
+}
+else
+{
+    <p>No ticket found.</p>
+}
